@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary - Deep Navy/Indigo */
+    --primary: 224 47% 21%;
+    --primary-foreground: 45 100% 96%;
+
+    /* Secondary - Soft slate */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 224 47% 21%;
+
+    /* Accent - Gold/Amber */
+    --accent: 38 92% 50%;
+    --accent-foreground: 224 47% 15%;
+
+    /* Background */
+    --background: 220 20% 98%;
+    --foreground: 224 30% 20%;
+
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 224 30% 20%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 30% 20%;
+
+    /* Muted */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 13% 46%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 47% 21%;
+
+    /* Radius */
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(224 47% 21%) 0%, hsl(224 47% 35%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(45 100% 60%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(224 47% 21% / 0.9) 0%, hsl(224 47% 35% / 0.8) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1) 0%, hsl(0 0% 100% / 0.05) 100%);
+
+    --shadow-soft: 0 4px 20px -4px hsl(224 47% 21% / 0.1);
+    --shadow-medium: 0 8px 30px -8px hsl(224 47% 21% / 0.15);
+    --shadow-strong: 0 20px 50px -15px hsl(224 47% 21% / 0.2);
+    --shadow-glow: 0 0 40px hsl(38 92% 50% / 0.3);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 224 30% 20%;
+    --sidebar-primary: 224 47% 21%;
+    --sidebar-primary-foreground: 45 100% 96%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 224 47% 21%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 224 47% 21%;
+  }
+
+  .dark {
+    --primary: 45 100% 70%;
+    --primary-foreground: 224 47% 10%;
+
+    --secondary: 224 30% 18%;
+    --secondary-foreground: 45 100% 96%;
+
+    --accent: 38 92% 55%;
+    --accent-foreground: 224 47% 10%;
+
+    --background: 224 40% 8%;
+    --foreground: 220 20% 95%;
+
+    --card: 224 35% 12%;
+    --card-foreground: 220 20% 95%;
+
+    --popover: 224 35% 12%;
+    --popover-foreground: 220 20% 95%;
+
+    --muted: 224 30% 18%;
+    --muted-foreground: 220 13% 65%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 224 30% 20%;
+    --input: 224 30% 20%;
+    --ring: 45 100% 70%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(224 40% 15%) 0%, hsl(224 47% 25%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(224 40% 8% / 0.95) 0%, hsl(224 47% 15% / 0.9) 100%);
+
+    --sidebar-background: 224 35% 10%;
+    --sidebar-foreground: 220 20% 95%;
+    --sidebar-primary: 45 100% 70%;
+    --sidebar-primary-foreground: 224 47% 10%;
+    --sidebar-accent: 224 30% 18%;
+    --sidebar-accent-foreground: 220 20% 95%;
+    --sidebar-border: 224 30% 20%;
+    --sidebar-ring: 45 100% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+  }
+
+  .glass-card {
+    @apply bg-white/80 dark:bg-card/80 backdrop-blur-lg border border-white/50 dark:border-border/50;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:opacity-90 transition-all duration-300;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-accent {
+    background-image: var(--gradient-accent);
+    @apply text-accent-foreground font-semibold transition-all duration-300 hover:scale-105;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-xl;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .mega-menu-item {
+    @apply flex items-start gap-3 p-3 rounded-xl transition-all duration-300 hover:bg-muted;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.4s ease-out forwards;
+  }
+
+  .animate-count-up {
+    animation: countUp 2s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Custom scrollbar - Hidden */
+::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+  background: transparent;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Swiper custom styles */
+.swiper-pagination-bullet {
+  @apply bg-primary/30 opacity-100;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-accent;
+}
